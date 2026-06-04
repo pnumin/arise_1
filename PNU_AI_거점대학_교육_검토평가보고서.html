@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNU AI 거점대학 교육 분야 검토 평가보고서</title>
+  <style>
+
+    :root {
+      --bg: #f5f7fa;
+      --paper: #ffffff;
+      --ink: #1e293b;
+      --muted: #64748b;
+      --line: #d8dee8;
+      --accent: #0f766e;
+      --accent-dark: #134e4a;
+      --soft: #eef6f5;
+      --soft-blue: #eef4ff;
+      --shadow: 0 18px 48px rgba(15, 23, 42, 0.09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.72;
+      letter-spacing: 0;
+    }
+    a { color: inherit; }
+    .page-header {
+      background: #102033;
+      color: #fff;
+      border-bottom: 5px solid var(--accent);
+    }
+    .header-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 28px;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #a7f3d0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .page-header h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    .meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: #dbeafe;
+      font-size: 14px;
+    }
+    .meta span {
+      border: 1px solid rgba(255,255,255,.22);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+    }
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin: 28px auto 56px;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      display: grid;
+      gap: 16px;
+    }
+    .toc, .quick-links {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .toc h2, .quick-links h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+    .toc nav { display: grid; gap: 8px; }
+    .toc a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #edf1f7;
+    }
+    .toc a:hover { color: var(--accent-dark); }
+    .quick-links p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+    .resource-grid { display: grid; gap: 10px; }
+    .resource-card {
+      display: grid;
+      gap: 5px;
+      text-decoration: none;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      background: #fbfdff;
+      min-width: 0;
+    }
+    .resource-card span { font-weight: 800; color: var(--accent-dark); }
+    .resource-card small { color: var(--muted); line-height: 1.45; }
+    .resource-card:hover { border-color: #99d7d0; background: var(--soft); }
+    main {
+      min-width: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 34px min(4vw, 48px) 46px;
+    }
+    main > h1 { display: none; }
+    main h2 {
+      margin: 44px 0 16px;
+      padding-top: 16px;
+      border-top: 2px solid #e7edf5;
+      font-size: 25px;
+      line-height: 1.35;
+      color: #0f172a;
+    }
+    main h2:first-of-type { margin-top: 0; border-top: 0; padding-top: 0; }
+    main h3 {
+      margin: 30px 0 12px;
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--accent-dark);
+    }
+    main h4 {
+      margin: 24px 0 10px;
+      font-size: 17px;
+      line-height: 1.45;
+      color: #334155;
+    }
+    p { margin: 0 0 14px; }
+    blockquote {
+      margin: 18px 0;
+      padding: 18px 20px;
+      border-left: 5px solid var(--accent);
+      background: var(--soft);
+      color: #123b39;
+      font-weight: 800;
+      border-radius: 0 8px 8px 0;
+    }
+    ul, ol {
+      margin: 10px 0 18px;
+      padding-left: 24px;
+    }
+    li { margin: 5px 0; }
+    code {
+      font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+      background: #eef2f7;
+      color: #0f3f3a;
+      border: 1px solid #dce5ee;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: .94em;
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 14px 0 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 14px;
+    }
+    th, td {
+      border-bottom: 1px solid #e8edf4;
+      border-right: 1px solid #e8edf4;
+      padding: 11px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th:last-child, td:last-child { border-right: 0; }
+    tr:last-child td { border-bottom: 0; }
+    th {
+      background: var(--soft-blue);
+      color: #17315f;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    tbody tr:nth-child(even) td { background: #fbfcfe; }
+    .task-section {
+      --task-color: #0f766e;
+      --task-dark: #134e4a;
+      --task-soft: #ecfdf5;
+      --task-head: #d9f6ef;
+      margin: 24px 0 28px;
+      padding: 22px 24px 18px;
+      border: 1px solid color-mix(in srgb, var(--task-color), white 62%);
+      border-left: 7px solid var(--task-color);
+      border-radius: 8px;
+      background: linear-gradient(180deg, var(--task-soft), #fff 120px);
+    }
+    .task-section h3 {
+      margin-top: 0;
+      color: var(--task-dark);
+    }
+    .task-section h3::before {
+      content: "핵심 과제";
+      display: inline-block;
+      margin-right: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--task-color);
+      color: #fff;
+      font-size: 12px;
+      line-height: 1.4;
+      vertical-align: 2px;
+    }
+    .task-section h4 { color: var(--task-dark); }
+    .task-section blockquote {
+      border-left-color: var(--task-color);
+      background: color-mix(in srgb, var(--task-soft), white 30%);
+      color: var(--task-dark);
+    }
+    .task-section th {
+      background: var(--task-head);
+      color: var(--task-dark);
+    }
+    .task-section .table-wrap {
+      border-color: color-mix(in srgb, var(--task-color), white 58%);
+    }
+    .task-1 {
+      --task-color: #0f766e;
+      --task-dark: #134e4a;
+      --task-soft: #ecfdf5;
+      --task-head: #ccfbf1;
+    }
+    .task-2 {
+      --task-color: #2563eb;
+      --task-dark: #1e3a8a;
+      --task-soft: #eff6ff;
+      --task-head: #dbeafe;
+    }
+    .task-3 {
+      --task-color: #be123c;
+      --task-dark: #881337;
+      --task-soft: #fff1f2;
+      --task-head: #ffe4e6;
+    }
+    .footer-note {
+      width: min(1180px, calc(100% - 40px));
+      margin: -34px auto 42px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 920px) {
+      .shell { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .toc nav { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .header-inner, .shell, .footer-note { width: min(100% - 24px, 1180px); }
+      .header-inner { padding: 26px 0 22px; }
+      main { padding: 24px 18px 32px; }
+      .task-section { padding: 18px 16px 14px; }
+      table { min-width: 640px; }
+      .page-header h1 { font-size: 28px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page-header { color: #000; background: #fff; border-bottom: 2px solid #000; }
+      .shell { display: block; width: 100%; margin: 0; }
+      .sidebar { display: none; }
+      main { border: 0; box-shadow: none; padding: 20px 0; }
+      a { text-decoration: none; }
+      .table-wrap { overflow: visible; }
+      table { min-width: 0; }
+      .task-section { break-inside: avoid; }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div class="header-inner">
+      <p class="eyebrow">정책 정합성·실행 가능성·보완 과제 검토</p>
+      <h1>PNU AI 거점대학 교육 분야 검토 평가보고서</h1>
+      <div class="meta">
+        <span>원본: PNU_AI_거점대학_교육_검토평가보고서.md</span>
+        <span>생성: 2026-06-04 15:06</span>
+      </div>
+    </div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <section class="quick-links" aria-labelledby="related-docs-title">
+        <h2 id="related-docs-title">관련 HTML 자료</h2>
+        <p>각 자료는 새 창에서 열립니다.</p>
+        <div class="resource-grid">
+          <a class="resource-card" href="index.html" target="_blank" rel="noopener noreferrer"><span>전체 계획안</span><small>ADP+X 기반 동남권 지역 AI 교육·연구 거점 구축 계획</small></a><a class="resource-card" href="교육부보편교육_AI융합교육원_정리.html" target="_blank" rel="noopener noreferrer"><span>교육부 보편교육·AI융합교육원 정리</span><small>AI융합교육원의 보편교육 기반과 운영 실적 정리</small></a><a class="resource-card" href="지역AI교육연구거점_AI교육원_매칭.html" target="_blank" rel="noopener noreferrer"><span>지역 AI 교육·연구 거점 매칭</span><small>교육부 지역 AI 교육·연구 거점 요구사항과 부산대 AI융합교육원 매칭</small></a>
+        </div>
+      </section>
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">목차</h2>
+        <nav><a href="#1-총평">1. 총평</a><a href="#2-핵심-평가">2. 핵심 평가</a><a href="#3-교육부-과업별-정합성-점검">3. 교육부 과업별 정합성 점검</a><a href="#4-기존-실적-반영-필요사항">4. 기존 실적 반영 필요사항</a><a href="#5-adp-x-adx-개념-반영-평가">5. ADP+X/ADX 개념 반영 평가</a><a href="#6-arise-ai-지역혁신-아카데미-보강-제안">6. <code>ARISE AI 지역혁신 아카데미</code> 보강 제안</a><a href="#7-페이지별-상세-코멘트">7. 페이지별 상세 코멘트</a><a href="#8-최종-사업계획서-구조-개편안">8. 최종 사업계획서 구조 개편안</a><a href="#9-성과지표-보완-제안">9. 성과지표 보완 제안</a><a href="#10-우선순위별-수정-과제">10. 우선순위별 수정 과제</a><a href="#11-바로-사용할-수-있는-보완-문안">11. 바로 사용할 수 있는 보완 문안</a><a href="#12-결론">12. 결론</a></nav>
+      </section>
+    </aside>
+    <main>
+      <h1 id="pnu-ai-거점대학-교육-분야-검토-평가보고서">PNU AI 거점대학 교육 분야 검토 평가보고서</h1>
+<ul><li>검토 대상: <code>자료/PNU_AI 거점대학(교육)_260601_v0.38.pdf</code></li><li>검토일: 2026년 6월 4일</li><li>검토 기준: 교육부 「성장엔진 연계 지역인재 양성방안」 중 <code>2. 지역 AI 교육·연구 거점 육성</code></li><li>참고 맥락: 부산대학교 AI융합교육원의 SW중심대학 사업 기반 실적, ARISE PNU AI 초안, ADP+X/ADX 개념, 지역 AI 교육·연구 거점 매칭 자료</li><li>추가 반영: 부산대학교 2026년 첨단산업 인재양성사업 AI 분야 선정 및 <code>260425 부트캠프 브로슈어 (발주).pdf</code></li></ul>
+<h2 id="1-총평">1. 총평</h2>
+<p>현재 초안은 <code>AI 전문·융합교육과정 설계</code> 측면에서는 비교적 완성도가 높다. 특히 기존 사업계획서의 <code>AI 기초/역량/전문/융합/실전형/대학원/창업/활용</code> 8개 교육유형을 그대로 나열하지 않고, 학습자 유형과 학습목표를 기준으로 재정리하려는 시도는 타당하다. <code>AI 역량 교육</code>과 <code>AI 활용 교육</code>의 중복을 지적하고, <code>AI 활용 교육</code>을 비전공자 중심 실습형 교육으로 통합하는 방향도 설득력이 있다.</p>
+<p>다만 이 문서는 아직 <code>지역 AI 교육·연구 거점 사업계획서</code>라기보다 <code>교육과정 체계화 초안</code>에 가깝다. 교육부 과업은 단순 교육과정 개발을 넘어 <code>대학 AI 교육·연구 구심점</code>, <code>AI 전문·융합교육</code>, <code>지역 AX 교육·연구 생태계</code>를 함께 요구한다. 현재 초안은 교육과정 설명 비중이 과도하고, 연구 거점, 산업 AX, 지역 네트워크, 성과지표, 기존 실적 근거가 상대적으로 약하다.</p>
+<p>특히 부산대학교가 2026년 첨단산업 인재양성사업 AI 분야에 선정된 사실은 이 초안에서 반드시 전면화해야 한다. 이는 단순한 외부사업 선정 실적이 아니라, <code>AI 역량 교육</code>, <code>AI 부트캠프</code>, <code>AX-PBL 사전 집중교육</code>, <code>지역 대학생·재직자 대상 AX Workforce 교육</code>을 즉시 실행할 수 있는 재정·운영 기반이다. 따라서 본 선정 성과는 교육과정 설명의 한 문장에 그치지 말고, 사업계획서의 실행 가능성, 실습 인프라, 지역 확산 전략을 뒷받침하는 핵심 근거로 반복 배치해야 한다.</p>
+<p>따라서 최종 사업계획서에서는 다음 메시지를 전면화해야 한다.</p>
+<blockquote>부산대학교 AI융합교육원은 SW중심대학 사업을 통해 축적한 전교생 AI·SW 기초교육, AI+X 융합교육, 지역 초중고·교원·시민·재직자 대상 보편교육, 자체 AI 플랫폼 운영 경험을 기반으로, 지역 AI 교육·연구 거점 사업을 신규 구축이 아닌 검증된 실행체계의 확장·고도화로 추진한다.</blockquote>
+<h2 id="2-핵심-평가">2. 핵심 평가</h2>
+<div class="table-wrap"><table><thead><tr><th>평가 영역</th><th>현재 수준</th><th>평가 의견</th></tr></thead><tbody><tr><td>교육부 과업 정합성</td><td>보통 이상</td><td>AI 전문·융합교육과정은 잘 대응하나, 연구 거점과 지역 AX 생태계 내용이 부족하다.</td></tr><tr><td>교육과정 체계성</td><td>높음</td><td>학습자 유형별 이수체계와 기초-응용-심화 구조는 강점이다.</td></tr><tr><td>기존 실적 활용</td><td>낮음</td><td>AI융합교육원의 SW중심대학 기반 실적이 거의 전면화되지 않았다.</td></tr><tr><td>첨단산업 인재양성사업 AI 분야 선정 활용</td><td>낮음</td><td>선정 사실은 AI 역량 교육과 AX-PBL의 실행 근거이나 현재 초안에서는 충분히 전략화되지 않았다.</td></tr><tr><td>ADP+X/ADX 철학 반영</td><td>보통</td><td><code>ADP 학부</code>, <code>AX-PBL</code>은 등장하지만 ADP+X가 사업 전체의 작동 원리로 설명되지 않는다.</td></tr><tr><td>지역성</td><td>보통</td><td>동남권, 고교, 지역대학, 시민 교육이 있으나 지역 산업·기업·기관 연결이 더 구체화되어야 한다.</td></tr><tr><td>연구·산학연계</td><td>낮음</td><td>장영실AI융합연구원, 산학 공동 AX 연구센터, URP, 패스트트랙이 본문 핵심 구조로 들어와야 한다.</td></tr><tr><td>실행 가능성</td><td>보통</td><td>많은 제안이 있으나 조직, 인력, 예산, 데이터 확보, 성과관리 체계가 부족하다.</td></tr><tr><td>사업계획서 설득력</td><td>보완 필요</td><td>신규 구상보다 기존 검증 실적과 고도화 계획을 결합해야 평가 대응력이 높아진다.</td></tr></tbody></table></div>
+<h2 id="3-교육부-과업별-정합성-점검">3. 교육부 과업별 정합성 점검</h2>
+<h3 id="3-1-대학-ai-교육-연구의-구심점-확립-및-기반-확충">3.1 대학 AI 교육·연구의 구심점 확립 및 기반 확충</h3>
+<p>현재 초안은 <code>AI융합교육원</code>, <code>장영실AI융합연구원</code>, <code>AX정보화혁신본부</code>를 12쪽 참고 표로 제시하고 있다. 이 내용은 교육부가 요구하는 총장 직속 AI 거버넌스에 직접 대응하므로 부록이나 참고가 아니라 본문 앞부분으로 올려야 한다.</p>
+<p>보완 방향은 다음과 같다.</p>
+<ul><li><code>AI융합교육원</code>: 학내 AI 기초·융합교육 컨트롤타워</li><li><code>장영실AI융합연구원</code>: 지역 AX 연구 및 AX-PBL 연구연계 컨트롤타워</li><li><code>AX정보화혁신본부</code>: 산지니 AI, LMS AI 조교, GPU/클라우드 등 인프라 실행조직</li><li><code>교양교육원</code>, <code>학사과</code>, <code>취업전략과</code>, <code>창업지원단</code>, <code>교육대학원</code>, <code>사범대</code>, <code>부산시교육청</code> 등 협력부서의 역할 명시</li></ul>
+<p>현재 <code>총장 직속 CDO</code> 신설 제안은 강력하지만, 평가자 입장에서는 다소 급진적인 조직개편으로 보일 수 있다. 유지하려면 데이터 보안, 기업 데이터 협약, 비식별화, 학습용 데이터셋 전환, IP 처리, 기업 상주 인력 운영까지 함께 제시해야 한다. 그렇지 않으면 <code>CDO 기능을 AX정보화혁신본부 또는 산학협력단 내 전담조직으로 우선 운영하고 단계적으로 직제화</code>하는 표현이 더 안전하다.</p>
+<h3 id="3-2-ai-전문-융합교육과정-설계-및-운영">3.2 AI 전문·융합교육과정 설계 및 운영</h3>
+<p>가장 강한 부분이다. 특히 다음 요소는 유지할 가치가 높다.</p>
+<ul><li>AI 기초 교육을 <code>Use-AI</code>, <code>Know-AI</code>, <code>Build-AI</code>, <code>Ethical-AI</code>, <code>Enable-AI</code>로 세분화</li><li>AI 비전공자 대상 <code>읽기-쓰기-적용</code> 단계형 AI 활용교육</li><li>AI 전공자 대상 <code>AI 산업 Value Chain</code> 교육</li><li>성장엔진 분야 기반 <code>도메인 심화형</code>과 <code>도메인 확장형</code> AI 융합교육</li><li>취업·진학·창업 목표별 <code>AX-PBL</code></li></ul>
+<p>다만 교육부 원문은 AI 개발자 역량 변화를 <code>문제 정의 및 설계, 협업, 코드 검증, 위험관리</code>로 명시한다. 현재 4대 핵심역량은 <code>AI 이해</code>, <code>AI 활용</code>, <code>AI 평가</code>, <code>AI 윤리</code>로 설계되어 있어 보편교육에는 적절하지만 전문인재 역량으로는 부족하다. 다음과 같이 확장하는 것이 좋다.</p>
+<div class="table-wrap"><table><thead><tr><th>기존 핵심역량</th><th>보완 제안</th></tr></thead><tbody><tr><td>AI 이해</td><td>AI 원리·구조·한계 이해</td></tr><tr><td>AI 활용</td><td>생성형 AI·데이터 도구 활용</td></tr><tr><td>AI 평가</td><td>결과 검증·편향·신뢰성 평가</td></tr><tr><td>AI 윤리</td><td>개인정보·저작권·공정성·책임성</td></tr><tr><td>추가: 문제정의</td><td>산업·지역 문제를 AI 과제로 전환하는 역량</td></tr><tr><td>추가: 설계·구현</td><td>데이터-모델-서비스 파이프라인 설계 및 구현 역량</td></tr><tr><td>추가: 운영·위험관리</td><td>모델 품질관리, 보안, 안전성, 운영 리스크 관리 역량</td></tr><tr><td>추가: 협업</td><td>도메인 전문가, 기업, 지역기관과 공동 문제해결 역량</td></tr></tbody></table></div>
+<h3 id="3-3-지역-ax-교육-연구-생태계-조성">3.3 지역 AX 교육·연구 생태계 조성</h3>
+<p>현재 초안의 가장 큰 약점이다. 지역 고교생, 지역 대학생, 시민 대상 교육은 있으나, <code>지역 AX 연구</code>와 <code>산학 공동 연구센터</code>가 충분히 설계되지 않았다. 교육부 요구사항에 맞추려면 별도 장으로 다음 내용을 추가해야 한다.</p>
+<ul><li>지역 기업이 참여하는 산학 공동 AX 연구센터</li><li>성장엔진 특화 AX 연구과제</li><li>산학 공동 지도교수제</li><li>대학원생 기업 교류 인턴십</li><li>AX 연구 프로젝트 성과물 기반 석사학위 취득 지원</li><li>학·석사/학·석·박 패스트트랙</li><li>학부생 연구 프로그램(URP)</li><li>지역대학 학생 대상 URP 개방</li><li>AI 거점대-과기원-AI 중심대학 협력</li><li>초중고-교원-재직자-시민으로 이어지는 평생학습 연계</li></ul>
+<p>특히 <code>PNU 1000 AX 인재 양성 프로그램</code>, <code>장영실AI융합연구원</code>, <code>PNU-AXIS</code>, <code>AI융합대학원</code>, <code>DS전문대학원</code>은 지역 AX 연구 생태계의 핵심 근거가 될 수 있다. 현재 교육 분야 PDF에는 이 연결이 약하게만 보이므로, 본문에 명시적으로 통합해야 한다.</p>
+<h2 id="4-기존-실적-반영-필요사항">4. 기존 실적 반영 필요사항</h2>
+<p>사업계획서는 신규 아이디어보다 실행 가능성을 평가받는다. 부산대의 강점은 이미 SW중심대학 사업을 통해 AI 보편교육과 지역 확산을 수행해왔다는 점이다. 다음 실적은 본문에 반드시 반영해야 한다.</p>
+<h3 id="4-1-학내-ai-보편교육-실적">4.1 학내 AI 보편교육 실적</h3>
+<ul><li>전교생 대상 SW·AI 기초교육 운영 경험</li><li>2026학년도 효원핵심교양 <code>인공지능과 디지털사고</code> 신설 및 전교생 AI 기본교육 필수 이수제와의 정합성</li><li>계열별 분반 운영 경험</li><li>SW융합 공통교과목 및 온라인 교과목 운영</li><li>SW융합트랙 13개 신설 및 AI+X 교육 확산</li><li>PNU Coding Challenge, TOPCIT, Code Place 등 역량 진단·인증 기반</li></ul>
+<h3 id="4-2-지역-확산-실적">4.2 지역 확산 실적</h3>
+<ul><li>자유학기·자유학년제 대학연계 AI·SW 교육</li><li>PNU SW·AI 키움학교</li><li>PNU SW·AI 오픈캠퍼스</li><li>고교학점제 연계 수업</li><li>찾아가는 SW·AI 진로 특강</li><li>글로벌 수학 데이터 챌린지(GMDC) 고교 멘토링</li><li>맞춤형 교사 연수 및 부산시교육청 협력</li><li>시민·학부모 대상 생성형 AI 교육</li><li>지역 산업 재직자, 공공기관, 언론인, 해군교육사령부 대상 AI 실무교육</li><li>인프런 무료 개방형 콘텐츠와 K-MOOC형 온라인 확산 기반</li></ul>
+<h3 id="4-3-인프라-실적">4.3 인프라 실적</h3>
+<ul><li>산지니 AI 플랫폼</li><li>LMS AI 조교</li><li>PNU DevCloud</li><li>Code Place</li><li>GPU 서버 및 AI 실습실</li><li>IT관·경암공학관 기반 실습 인프라</li><li>AX정보화혁신본부의 플랫폼·인프라 실행 역할</li></ul>
+<h3 id="4-4-지역-네트워크-실적">4.4 지역 네트워크 실적</h3>
+<ul><li>부산·경남 6개 대학 SW중심대학 업무협약</li><li>부산형 SW중심대학 협력모델</li><li>부산공유대학 연계 가능성</li><li>UNIST, 창원대, 경상국립대 등 동남권 협력 확장 가능성</li><li>지역 기업·기관 데이터 기반 문제해결 프로젝트 운영 경험</li></ul>
+<h3 id="4-5-2026년-첨단산업-인재양성사업-ai-분야-선정">4.5 2026년 첨단산업 인재양성사업 AI 분야 선정</h3>
+<p>2026년 첨단산업 인재양성사업 AI 분야 선정은 별도 실적 항목으로 독립 배치해야 한다. 현재 초안 1쪽의 <code>AI 역량 교육</code> 설명에 부트캠프 사업 연계가 언급되어 있으나, 선정 사실 자체가 사업계획서의 실행 가능성을 뒷받침하는 핵심 근거이므로 더 적극적으로 활용해야 한다.</p>
+<p>반영 위치는 다음과 같다.</p>
+<div class="table-wrap"><table><thead><tr><th>반영 위치</th><th>반영 의미</th></tr></thead><tbody><tr><td><code>지역 AI 교육·연구 거점 개요</code></td><td>부산대가 AI 실습교육을 즉시 실행할 수 있는 선정 사업 기반을 이미 확보했다는 강점</td></tr><tr><td><code>AI 역량 교육</code></td><td>AI 도구 활용, 데이터 분석, 생성형 AI, 실습 중심 단기 집중교육의 직접 운영 기반</td></tr><tr><td><code>AI 실전형 교육(AX-PBL)</code></td><td>산업 데이터 기반 프로젝트 참여 전 필요한 사전 집중훈련 단계</td></tr><tr><td><code>ARISE AI 지역혁신 아카데미</code></td><td>지역 대학생·재직자 대상 AI 집중교육 및 AX Workforce Track 확산 기반</td></tr><tr><td><code>성과지표</code></td><td>부트캠프 이수자 수, 참여기업 수, 실습 프로젝트 수, AX-PBL 연계율 등 정량성과 지표</td></tr></tbody></table></div>
+<p>최종 사업계획서에서는 다음 흐름으로 배치하는 것이 가장 설득력 있다.</p>
+<blockquote>AI 기초교육 → AI 부트캠프 → AX-PBL → 현장실습·인턴십·취업·창업</blockquote>
+<p>즉, 부트캠프는 독립 비교과 프로그램이 아니라 <code>AI 기초교육</code>과 <code>AX-PBL</code> 사이를 연결하는 실습형 가교로 정의해야 한다. 이를 통해 학생은 기초 리터러시 단계에서 바로 산업 문제해결 프로젝트로 넘어가는 것이 아니라, 집중 실습을 통해 데이터 처리, AI 도구 활용, 모델 적용, 문제해결 방법론을 먼저 확보하게 된다.</p>
+<h2 id="5-adp-x-adx-개념-반영-평가">5. ADP+X/ADX 개념 반영 평가</h2>
+<p>ARISE PNU AI 초안의 핵심 차별성은 <code>ADP+X</code> 구조다. 이는 AI를 단일 기술 교육으로 보지 않고, <code>AI</code>, <code>Data</code>, <code>Process</code>를 각 도메인 <code>X</code>에 결합하여 실제 전환 <code>AX</code>를 실현하는 체계로 볼 수 있다.</p>
+<p>현재 PDF에는 <code>ADP 학부</code>, <code>AI Full stack</code>, <code>AX-PBL</code> 등 관련 용어가 등장하지만, ADP+X가 교육과정 전체를 관통하는 설계 원리로 충분히 설명되지는 않는다. 최종안에는 다음 정의를 넣는 것이 좋다.</p>
+<blockquote>부산대학교 AI 교육체계는 AI 기술(A), 데이터 자원(D), 현실 활동의 구조화(Process, P)를 각 산업·사회·교육 현장(X)에 적용하여 실질적 AX를 구현하는 ADP+X 기반 교육모델이다.</blockquote>
+<p>이 정의를 넣으면 각 교육과정의 역할도 명확해진다.</p>
+<div class="table-wrap"><table><thead><tr><th>교육과정</th><th>ADP+X 관점의 역할</th></tr></thead><tbody><tr><td>AI 기초 교육</td><td>모든 학습자가 A, D, P의 기본 언어를 이해하도록 하는 공통 기반</td></tr><tr><td>AI 부트캠프</td><td>첨단산업 인재양성사업 AI 분야 선정 기반의 단기 집중 실습교육으로, AX-PBL 진입 전 ADP 활용역량을 압축 훈련</td></tr><tr><td>AI 활용 교육</td><td>비전공자가 자신의 학습·전공 X에 AI를 적용하는 역량 형성</td></tr><tr><td>AI 전문 교육</td><td>AI, Data, Process를 구현·운영할 전문인재 양성</td></tr><tr><td>AI 융합 교육</td><td>성장엔진 산업 X와 ADP를 결합하는 도메인 융합교육</td></tr><tr><td>AX-PBL</td><td>실제 기업·지역 문제 X를 ADP로 해결하는 실전형 전환 교육</td></tr><tr><td>지역혁신 아카데미</td><td>시민·교원·재직자 현장 X로 ADP+X를 확산하는 지역 플랫폼</td></tr></tbody></table></div>
+<h2 id="6-arise-ai-지역혁신-아카데미-보강-제안">6. <code>ARISE AI 지역혁신 아카데미</code> 보강 제안</h2>
+<p>현재 초안의 <code>ARISE AI 시민 아카데미</code>는 시민·디지털 취약계층·일반 성인학습자 중심으로 설계되어 있다. 그러나 교육부 원문은 <code>초중고 학생</code>, <code>예비·현직교원</code>, <code>지역 산업 재직자</code>, <code>지역주민</code>을 모두 포함한다. 따라서 명칭과 구조를 <code>ARISE AI 지역혁신 아카데미</code>로 확장하는 것이 적절하다.</p>
+<h3 id="6-1-정의-문장">6.1 정의 문장</h3>
+<blockquote>ARISE AI 지역혁신 아카데미는 부산대학교의 ADP+X 교육체계를 기반으로, 시민·교원·재직자가 AI, Data, Process를 각자의 현장 X에 적용하여 지역사회와 산업의 AX를 실현하도록 지원하는 지역 AI 평생·직업·교원교육 플랫폼이다.</blockquote>
+<h3 id="6-2-권장-트랙">6.2 권장 트랙</h3>
+<div class="table-wrap"><table><thead><tr><th>트랙</th><th>대상</th><th>핵심 내용</th><th>산출물</th></tr></thead><tbody><tr><td>AI Citizen Track</td><td>지역 시민·취약계층</td><td>AI 생활 리터러시, 디지털 포용, 생활문제 해결</td><td>생활 AI 활용 포트폴리오, 수료증</td></tr><tr><td>AI Teacher Track</td><td>예비·현직교원</td><td>AI 융합수업 설계, 생성형 AI 활용 수업, AI 윤리·평가</td><td>교과별 AI 수업지도안, AI 평가도구</td></tr><tr><td>AX Workforce Track</td><td>지역 산업 재직자</td><td>첨단산업 인재양성사업 AI 분야 선정 기반 직무별·수준별 AX 전환 교육, 산업 데이터 기반 실무 프로젝트</td><td>기업 AX 개선안, PoC, 자동화 시나리오</td></tr><tr><td>Regional Problem-Solving Track</td><td>지역 대학생·기관</td><td>지역문제 데이터 분석, 지자체·공공기관 문제해결</td><td>지역문제 해결 프로젝트 결과물</td></tr></tbody></table></div>
+<h3 id="6-3-예비-현직교원-트랙-보강-내용">6.3 예비·현직교원 트랙 보강 내용</h3>
+<p>현재 시민 아카데미에는 교원 교육이 약하다. 아래 내용을 별도 트랙으로 넣어야 한다.</p>
+<ul><li>사범대, 교육대학원, AI융합교육전공, 부산시교육청 연계</li><li>예비교원 대상 AI 융합수업 설계 교과 또는 비교과 운영</li><li>현직교원 대상 직무연수 과정 운영</li><li>AI 디지털교과서, 생성형 AI 활용 수업, AI 윤리·저작권, 학생 AI 역량 평가 포함</li><li>고교학점제, R&amp;E, AI 동아리, 과학고·영재학교 심화연구반과 연결</li><li>산출물은 <code>교과별 AI 수업지도안</code>, <code>AI 활용 수행평가 도구</code>, <code>수업 사례집</code>으로 구체화</li></ul>
+<h3 id="6-4-재직자-트랙-보강-내용">6.4 재직자 트랙 보강 내용</h3>
+<p>현재 시민 아카데미는 시민 리터러시 중심이라 지역 산업 재직자 대상 AX 교육이 약하다. 아래 내용을 보강해야 한다.</p>
+<ul><li>제조 AX, 조선·해양, 항만·물류, 금융·공공, 바이오·헬스케어 등 성장엔진 산업별 트랙</li><li>관리자 과정: AX 전략, 데이터 기반 의사결정, AI 도입 리스크 관리</li><li>실무자 과정: 생성형 AI 업무자동화, 데이터 분석, 현장 프로세스 개선</li><li>기술담당자 과정: 데이터 파이프라인, 모델 활용, MLOps, 보안·품질관리</li><li>기업 현장 데이터 기반 미니 프로젝트 필수화</li><li>수료 결과를 기업별 AX 과제 발굴, 업무 프로세스 개선안, PoC로 연결</li></ul>
+<h3 id="6-5-첨단산업-인재양성사업-ai-분야-선정과의-연계">6.5 첨단산업 인재양성사업 AI 분야 선정과의 연계</h3>
+<p><code>ARISE AI 지역혁신 아카데미</code>는 2026년 첨단산업 인재양성사업 AI 분야 선정 성과를 지역 확산 플랫폼으로 활용해야 한다. 특히 부트캠프 운영 경험과 교육콘텐츠를 학내 재학생에게만 한정하지 않고, 지역 대학생과 지역 산업 재직자에게 단계적으로 개방하면 교육부가 요구하는 <code>지역 AI 교육모델 확산</code>과 <code>지역 산업 재직자 대상 AX 교육</code>을 동시에 충족할 수 있다.</p>
+<p>연계 방식은 다음과 같다.</p>
+<ul><li>학내 재학생: AI 기초교육 이수 후 부트캠프를 통해 AX-PBL 참여 전 실습역량 확보</li><li>지역 대학생: 부산공유대학 또는 지역대학 협약을 통해 방학 집중형 AI 부트캠프 개방</li><li>지역 산업 재직자: AX Workforce Track 내 직무별 단기 집중과정으로 재구성</li><li>참여기업: 부트캠프 프로젝트 주제, 현장 데이터, 멘토링 제공</li><li>성과환류: 우수 프로젝트를 AX-PBL, 현장실습, 인턴십, 산학 공동연구로 연결</li></ul>
+<h2 id="7-페이지별-상세-코멘트">7. 페이지별 상세 코멘트</h2>
+<h3 id="7-1-1쪽-지역-ai-교육-연구-거점-정의-및-방향성">7.1 1쪽: 지역 AI 교육·연구 거점 정의 및 방향성</h3>
+<p><code>동남권 AI 인재 양성 및 성장엔진 분야 AX 전환 허브</code>라는 정의는 적절하다. 다만 현재 방향성이 <code>AI 전략 거점화</code>, <code>규모의 거점화</code>, <code>개방형 거점화</code>로만 구성되어 있어 연구 거점성이 약하다.</p>
+<p>보완 제안:</p>
+<ul><li><code>산업데이터 기반 AX 연구 거점화</code> 추가</li><li><code>지역 AI 평생·직업·교원교육 거점화</code> 추가</li><li>AI대학 424명 규모뿐 아니라 AI융합교육원의 기존 교육 운영 실적을 함께 제시</li><li><code>개방형 거점화</code>에는 고교생·대학생·기업 재직자·지역민 외에 예비·현직교원을 명시</li></ul>
+<h3 id="7-2-1-3쪽-교육과정-분류체계와-kearney-제안">7.2 1~3쪽: 교육과정 분류체계와 Kearney 제안</h3>
+<p>교육과정 중복을 지적하고 학습자 유형별 이수체계로 재구성한 점은 강점이다. 그러나 최종 사업계획서에서는 <code>Kearney 제안</code>이라는 표현을 줄이고, 부산대 공식 전략처럼 서술하는 편이 좋다.</p>
+<p>수정 제안:</p>
+<ul><li><code>Kearney 제안</code> → <code>교육과정 고도화 방향</code></li><li><code>ARISE 공유대학 교육</code>, <code>ARISE AI 시민 아카데미</code>는 각각 <code>ARISE AI 공유교육</code>과 <code>ARISE AI 지역혁신 아카데미</code>로 명칭 조정 검토</li><li>지역 학습자 범주에 교원·재직자를 분리하여 명시</li><li><code>AI 역량 교육</code>에는 2026년 첨단산업 인재양성사업 AI 분야 선정 사실을 명시하고, 부트캠프를 <code>AI 기초교육 이후 AX-PBL 이전의 사전 집중 실습단계</code>로 재정의</li></ul>
+<h3 id="7-3-4쪽-ai-핵심역량과-ai-기초교육">7.3 4쪽: AI 핵심역량과 AI 기초교육</h3>
+<p>4대 핵심역량은 보편교육에는 적합하지만, AI 전문·융합인재 역량으로는 부족하다. <code>문제정의</code>, <code>설계·구현</code>, <code>운영·위험관리</code>, <code>협업</code>을 추가해야 교육부 요구와 더 잘 맞는다.</p>
+<p>AI 기초교육은 부산대의 기존 강점이므로 <code>전교생 AI 기본교육 필수 이수제</code> 대응 논리와 함께 기존 운영 실적을 넣어야 한다.</p>
+<p>아울러 <code>AI 역량 교육</code>은 첨단산업 인재양성사업 AI 분야 선정 성과와 직접 연결해야 한다. 현재처럼 단순히 사업명을 언급하는 수준보다, <code>선정으로 확보한 재정·콘텐츠·운영 기반을 활용해 AI 도구 활용, 데이터 분석, 생성형 AI, 모델 적용, 문제해결 실습을 단기 집중형으로 운영한다</code>는 식으로 실행력을 보여줘야 한다.</p>
+<h3 id="7-4-5쪽-ai-융합교육">7.4 5쪽: AI 융합교육</h3>
+<p><code>도메인 심화형</code>과 <code>도메인 확장형</code> 구분은 좋다. 다만 <code>각 학과별 최소 1개 이상의 융합전공 개설 의무화</code>는 실행 리스크가 크다.</p>
+<p>수정 제안:</p>
+<ul><li><code>선도학과 우선 운영</code></li><li><code>마이크로디그리 또는 트랙형 과정 우선 도입</code></li><li><code>성과 기반 융합전공 확대</code></li><li><code>브랜드 단과대학 및 AX융합학부와 연계</code></li></ul>
+<h3 id="7-5-6-7쪽-ai-실전형-교육과-ax-pbl">7.5 6~7쪽: AI 실전형 교육과 AX-PBL</h3>
+<p>초안의 가장 강한 부분이다. 취업·진학·창업 목표별 AX-PBL은 교육부의 실전형 교육 요구와 잘 맞는다. 다만 기업 데이터 확보와 운영체계가 부족하다.</p>
+<p>반드시 추가할 내용:</p>
+<ul><li>참여기업·기관 발굴 방식</li><li>데이터 제공 협약</li><li>데이터 비식별화 및 보안</li><li>기업 멘토단</li><li>IP·성과물 귀속 원칙</li><li>프로젝트 결과의 기업·지자체 환류</li><li>AX-PBL 과제은행 구축</li><li>학생 AI 역량 진단 및 전후 비교</li><li>첨단산업 인재양성사업 AI 분야 부트캠프 이수자를 AX-PBL 우선 연계하는 운영체계</li><li>부트캠프 미니 프로젝트를 AX-PBL 본 프로젝트로 확장하는 단계형 설계</li></ul>
+<h3 id="7-6-7쪽-cdo-직제">7.6 7쪽: CDO 직제</h3>
+<p>CDO 신설은 데이터 기반 AX-PBL 운영을 위해 의미 있는 제안이다. 그러나 최종 계획서에는 <code>왜 필요한지</code>, <code>어디에 설치하는지</code>, <code>기존 조직과 어떻게 다르게 작동하는지</code>가 필요하다.</p>
+<p>보완 방향:</p>
+<ul><li>1단계: AX정보화혁신본부 또는 산학협력단 내 <code>산업데이터 협력 전담팀</code> 설치</li><li>2단계: 기업 데이터 협약, 보안, 학습용 데이터셋 변환 표준 운영</li><li>3단계: 총장 직속 CDO 또는 데이터 거버넌스로 직제화</li></ul>
+<h3 id="7-7-7-8쪽-ai-전공자-교육">7.7 7~8쪽: AI 전공자 교육</h3>
+<p><code>ADP 학부</code> 용어가 설명 없이 등장한다. 첫 등장 시 반드시 풀어서 설명해야 한다. 또한 AI Full stack 역량과 ADP+X 구조를 연결하면 차별성이 강해진다.</p>
+<p>보완 문장:</p>
+<blockquote>AI 전공자 교육은 AI, Data, Process의 전 주기를 이해하고 각 산업 도메인 X에 적용할 수 있는 ADP+X형 T자 인재 양성을 목표로 한다.</blockquote>
+<h3 id="7-8-8-9쪽-ai-비전공자-교육">7.8 8~9쪽: AI 비전공자 교육</h3>
+<p><code>읽기-쓰기-적용</code> 모델은 교육적으로 좋다. 다만 인문사회 글쓰기 중심으로 좁게 보일 수 있다. 계열별 예시가 필요하다.</p>
+<p>예시:</p>
+<ul><li>자연·공학: 실험 데이터 해석, 코드 보조, 시뮬레이션 결과 검토</li><li>인문·사회: 텍스트 분석, 정책자료 요약, 논증 구조 개선</li><li>예술: 생성형 AI 기반 콘텐츠 기획, 시각물 제작, 저작권 검토</li><li>경영: 시장 데이터 분석, 고객 세그먼트 도출, 보고서 자동화</li><li>의료·보건: 문헌 탐색, 임상·공공데이터 해석의 윤리적 활용</li></ul>
+<h3 id="7-9-9-11쪽-지역-학습자-교육">7.9 9~11쪽: 지역 학습자 교육</h3>
+<p>고교생, 지역 대학생, 시민 교육 구상은 좋다. 다만 <code>PNU 대입 지원 시 입학전형 내 가산점 부여</code>는 입시 공정성 및 제도 리스크가 크다. 삭제하거나 매우 신중하게 순화해야 한다.</p>
+<p>대체 표현:</p>
+<ul><li>우수 참여자 대상 전공체험, 재학생 멘토링, 연구실 탐방 우선 제공</li><li>선이수 과목의 학점 인정 검토</li><li>교육 이수증 및 포트폴리오 제공</li><li>진로 탐색 자료로 활용 가능</li></ul>
+<h3 id="7-10-11쪽-시민-아카데미">7.10 11쪽: 시민 아카데미</h3>
+<p>현재 시민 아카데미는 지역 주민과 취약계층 중심이다. 교육부 요구사항에 맞추려면 <code>ARISE AI 지역혁신 아카데미</code>로 확장하고, 예비·현직교원 트랙과 재직자 트랙을 넣어야 한다.</p>
+<p>권장 수정:</p>
+<ul><li><code>ARISE AI 시민 아카데미</code> → <code>ARISE AI 지역혁신 아카데미</code></li><li>시민, 교원, 재직자, 지역문제 해결 트랙으로 구성</li><li>ADP+X 기반 지역 확산 플랫폼으로 정의</li></ul>
+<h3 id="7-11-12쪽-거버넌스-기구">7.11 12쪽: 거버넌스 기구</h3>
+<p>이 표는 매우 중요하다. 현재는 참고 자료처럼 제시되어 있으나, 사업계획서 본문 초반에 들어가야 한다.</p>
+<p>수정 제안:</p>
+<ul><li>1장에 <code>총장 직속 AI 거버넌스 및 실행조직</code> 절 신설</li><li>3개 기구의 역할을 교육부 과업 3개 축과 1:1로 매칭</li><li>AI융합교육원: 교육</li><li>장영실AI융합연구원: 연구·AX-PBL·대학원 연계</li><li>AX정보화혁신본부: 인프라·플랫폼·데이터 거버넌스</li></ul>
+<h2 id="8-최종-사업계획서-구조-개편안">8. 최종 사업계획서 구조 개편안</h2>
+<p>현재 PDF는 교육과정 설명이 길고 사업계획서 구조가 약하다. 다음 순서로 재구성하는 것이 좋다.</p>
+<ol><li>사업 비전 및 추진 배경</li></ol>
+<ul><li>교육부 <code>지역 AI 교육·연구 거점</code> 요구사항</li><li>동남권 성장엔진 AX 전환 필요성</li><li>부산대의 기존 실행 기반</li></ul>
+<ol><li>부산대 AI 거점 모델: ADP+X 기반 지역 AX 허브</li></ol>
+<ul><li>ADP+X/ADX 정의</li><li>AI대학, AI융합교육원, 장영실AI융합연구원, AX정보화혁신본부 역할</li><li>교육-연구-인프라-지역확산 통합 구조</li></ul>
+<ol><li>대학 AI 교육·연구 구심점 및 기반 확충</li></ol>
+<ul><li>총장 직속 거버넌스</li><li>AI융합교육원 기존 실적과 고도화</li><li>산지니 AI, DevCloud, Code Place 등 인프라</li></ul>
+<ol><li>AI 전문·융합교육과정 설계 및 운영</li></ol>
+<ul><li>AI 핵심역량 체계</li><li>전교생 AI 기초교육</li><li>첨단산업 인재양성사업 AI 분야 부트캠프</li><li>AI 전공자 교육</li><li>AI 비전공자 교육</li><li>성장엔진 AI 융합교육</li><li>AX-PBL</li></ul>
+<ol><li>지역 AX 교육·연구 생태계 조성</li></ol>
+<ul><li>산학 공동 AX 연구센터</li><li>PNU 1000 AX 인재 양성 프로그램</li><li>URP 및 대학원 패스트트랙</li><li>지역 AI 인재 네트워크</li><li>ARISE AI 지역혁신 아카데미</li></ul>
+<ol><li>성과관리 및 확산 전략</li></ol>
+<ul><li>성과지표</li><li>연차별 로드맵</li><li>교육과정 환류</li><li>지역대학·기업·교육청 확산</li></ul>
+<h2 id="9-성과지표-보완-제안">9. 성과지표 보완 제안</h2>
+<p>현재 초안에는 성과지표가 부족하다. 다음 지표를 추가해야 한다.</p>
+<div class="table-wrap"><table><thead><tr><th>영역</th><th>지표 예시</th></tr></thead><tbody><tr><td>전교생 AI 기초교육</td><td>이수자 수, 이수율, 계열별 분반 수, AI 역량 진단 향상도</td></tr><tr><td>AI 부트캠프</td><td>첨단산업 인재양성사업 AI 분야 부트캠프 이수자 수, 집중교육 과정 수, 실습 프로젝트 수, AX-PBL 연계율</td></tr><tr><td>AI 전문교육</td><td>전공트랙 수, 참여 학생 수, 인증 취득자 수, AI 프로젝트 산출물 수</td></tr><tr><td>AI 융합교육</td><td>AI+X 교과목 수, 융합전공/트랙 수, 참여 학과 수</td></tr><tr><td>AX-PBL</td><td>과제 수, 참여기업 수, 참여 학생 수, 기업 멘토 수, PoC 산출물 수</td></tr><tr><td>지역 고교 연계</td><td>고교학점제 과목 수, R&amp;E 과제 수, 참여 고교·학생 수</td></tr><tr><td>지역대학 공유</td><td>공동수강 인원, 학점교류 과목 수, 참여대학 수</td></tr><tr><td>교원교육</td><td>예비교원 이수자 수, 현직교원 연수 인원, 수업지도안 산출물 수</td></tr><tr><td>재직자교육</td><td>참여기업 수, 재직자 이수자 수, 직무별 과정 수, 기업 AX 개선안 수</td></tr><tr><td>시민교육</td><td>시민·취약계층 이수자 수, 지역기관 연계 수, 디지털 강사 양성 수</td></tr><tr><td>연구연계</td><td>산학 공동 AX 연구과제 수, URP 참여자 수, 패스트트랙 진학자 수</td></tr><tr><td>인프라</td><td>GPU 사용시간, 산지니 AI 사용자 수, Code Place 문제 풀이 수</td></tr></tbody></table></div>
+<h2 id="10-우선순위별-수정-과제">10. 우선순위별 수정 과제</h2>
+<h3 id="10-1-최우선">10.1 최우선</h3>
+<ul><li>12쪽 거버넌스 표를 본문 앞부분으로 이동</li><li><code>ARISE AI 시민 아카데미</code>를 <code>ARISE AI 지역혁신 아카데미</code>로 확장</li><li>2026년 첨단산업 인재양성사업 AI 분야 선정 사실을 <code>AI 역량 교육</code>, <code>AX-PBL</code>, <code>지역혁신 아카데미</code>에 핵심 실행 근거로 반영</li><li>예비·현직교원 트랙과 재직자 AX Workforce 트랙 추가</li><li>기존 SW중심대학 기반 실적을 각 절마다 근거로 삽입</li><li>지역 AX 연구센터와 장영실AI융합연구원 역할을 별도 절로 추가</li></ul>
+<h3 id="10-2-중요">10.2 중요</h3>
+<ul><li>ADP+X/ADX 정의를 사업 전체의 핵심 모델로 명시</li><li>AI 핵심역량에 문제정의, 설계·구현, 운영·위험관리, 협업 추가</li><li>AX-PBL 운영을 위한 기업 데이터 협약·보안·성과물 환류 체계 추가</li><li>부트캠프 교육과 AX-PBL, 현장실습, 인턴십, 취업·창업 연계 로드맵 작성</li><li>성장엔진 분야별 교육-연구-기업 매칭표 작성</li><li>성과지표 및 연차별 목표 추가</li></ul>
+<h3 id="10-3-표현-리스크-관리">10.3 표현·리스크 관리</h3>
+<ul><li><code>Kearney 제안</code> 표현을 최종본에서 삭제 또는 공식 전략화</li><li><code>각 학과별 최소 1개 융합전공 의무화</code>는 단계형 확산으로 조정</li><li><code>입학전형 가산점</code> 표현 삭제 또는 제도 검토 표현으로 순화</li><li><code>Sovereign AI</code>, <code>CDO</code>, <code>ADP</code> 등 약어는 첫 등장 시 정의</li><li>컨설팅식 문장보다 대학 실행계획 문장으로 정리</li></ul>
+<h2 id="11-바로-사용할-수-있는-보완-문안">11. 바로 사용할 수 있는 보완 문안</h2>
+<h3 id="11-1-사업-정체성-문안">11.1 사업 정체성 문안</h3>
+<blockquote>부산대학교 지역 AI 교육·연구 거점은 AI융합교육원이 축적해 온 전교생 AI 기초교육, AI+X 융합교육, 지역 보편교육 운영 경험과 AI대학의 ADP+X 교육체계, 장영실AI융합연구원의 AX 연구역량, AX정보화혁신본부의 AI 플랫폼·인프라를 결합하여 동남권 성장엔진 산업의 AX 전환을 견인하는 교육·연구·확산 허브로 운영한다.</blockquote>
+<h3 id="11-2-adp-x-문안">11.2 ADP+X 문안</h3>
+<blockquote>부산대학교의 AI 교육모델은 AI 기술(A), 데이터 자원(D), 현실 활동의 구조화(Process, P)를 각 산업·사회·교육 현장(X)에 적용하여 실질적 AX를 구현하는 ADP+X 기반 교육체계이다. 이를 통해 AI 전공자는 데이터와 프로세스를 이해하는 구현 인재로, 비전공자는 자신의 전공과 현장 문제를 AI로 전환하는 융합 인재로 성장한다.</blockquote>
+<h3 id="11-3-arise-ai-지역혁신-아카데미-문안">11.3 ARISE AI 지역혁신 아카데미 문안</h3>
+<blockquote>ARISE AI 지역혁신 아카데미는 부산대학교의 ADP+X 교육체계를 기반으로, 지역 시민의 AI 생활 리터러시, 예비·현직교원의 AI 수업역량, 지역 산업 재직자의 AX 직무역량을 통합적으로 강화하는 지역 AI 평생·직업·교원교육 플랫폼이다.</blockquote>
+<h3 id="11-4-ax-pbl-문안">11.4 AX-PBL 문안</h3>
+<blockquote>AX-PBL은 지역 기업·기관의 실제 데이터와 현안을 기반으로 학생들이 문제 정의, 데이터 분석, AI 솔루션 설계, 결과 검증, 현장 적용 가능성 평가까지 수행하는 진로연계형 실전 교육과정이다. 취업형, 진학형, 창업형 트랙으로 운영하며, 기업 멘토링, 데이터 보안, 성과물 환류 체계를 함께 구축한다.</blockquote>
+<h3 id="11-5-연구-거점-문안">11.5 연구 거점 문안</h3>
+<blockquote>장영실AI융합연구원은 지역 기업이 참여하는 산학 공동 AX 연구센터의 실행 조직으로서 성장엔진 분야별 AX 연구과제를 발굴하고, AX-PBL, 학부생 연구 프로그램(URP), 대학원 패스트트랙, 산학 공동지도교수제를 연계하여 교육과 연구가 통합된 지역 AX 인재양성 생태계를 조성한다.</blockquote>
+<h3 id="11-6-첨단산업-인재양성사업-ai-분야-선정-문안">11.6 첨단산업 인재양성사업 AI 분야 선정 문안</h3>
+<blockquote>부산대학교는 2026년 첨단산업 인재양성사업 AI 분야에 선정되어 AI 도구 활용, 데이터 분석, 생성형 AI, 산업 문제해결 중심의 단기 집중형 실습교육을 운영할 수 있는 재정·콘텐츠·운영 기반을 확보하였다. 본 사업에서는 해당 부트캠프를 AI 기초교육 이후 AX-PBL 진입 전 사전 집중훈련 단계로 활용하여, 학생들이 산업 데이터 기반 프로젝트에 참여하기 전 필요한 AI 활용, 데이터 처리, 모델 적용, 문제해결 역량을 단기간에 확보하도록 지원한다.</blockquote>
+<blockquote>또한 부트캠프 교육과정을 지역 대학생 및 지역 산업 재직자에게 단계적으로 개방하여 ARISE AI 지역혁신 아카데미의 AX Workforce Track과 연계하고, 우수 프로젝트를 AX-PBL, 현장실습, 인턴십, 산학 공동연구로 확장한다.</blockquote>
+<h2 id="12-결론">12. 결론</h2>
+<p>현재 초안은 교육과정 설계 측면에서는 충분한 장점이 있으나, 교육부 <code>지역 AI 교육·연구 거점</code> 사업계획서로 제출하기 위해서는 다음 네 가지 보강이 필수다.</p>
+<ol><li>AI융합교육원의 기존 SW중심대학 기반 실행 실적을 전면 배치한다.</li><li>ADP+X/ADX를 부산대 AI 거점의 핵심 차별화 모델로 명확히 정의한다.</li><li>2026년 첨단산업 인재양성사업 AI 분야 선정 성과를 AI 역량 교육, 부트캠프, AX-PBL, 재직자 교육의 실행 기반으로 제시한다.</li><li>지역 AX 연구센터, 장영실AI융합연구원, PNU 1000 AX, URP, 대학원 패스트트랙을 포함해 연구 거점성을 보강한다.</li><li><code>ARISE AI 지역혁신 아카데미</code>를 통해 시민, 예비·현직교원, 재직자 교육을 통합하고 지역 확산 플랫폼으로 제시한다.</li></ol>
+<p>이 방향으로 수정하면 현재 문서는 단순 교육과정 설명서에서 벗어나, <code>부산대가 이미 검증된 AI 교육·확산 기반을 바탕으로 동남권 AX 전환을 수행할 수 있다</code>는 평가 메시지를 갖춘 사업계획서로 발전할 수 있다.</p>
+    </main>
+  </div>
+  <p class="footer-note">이 HTML은 검토평가보고서 Markdown을 정적 페이지로 변환한 파일입니다. 관련 자료 링크는 새 창에서 열립니다.</p>
+</body>
+</html>
